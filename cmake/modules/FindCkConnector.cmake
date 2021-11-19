@@ -1,18 +1,3 @@
-# - Try to find the ConsoleKit connector library (libck-connector)
-# Once done this will define
-#
-#  CKCONNECTOR_FOUND - system has the CK Connector
-#  CKCONNECTOR_INCLUDE_DIR - the CK Connector include directory
-#  CKCONNECTOR_LIBRARIES - the libraries needed to use CK Connector
-
-# Copyright (c) 2008, Kevin Kofler, <kevin.kofler@chello.at>
-# modeled after FindLibArt.cmake:
-# Copyright (c) 2006, Alexander Neundorf, <neundorf@kde.org>
-#
-# Redistribution and use is allowed according to the terms of the BSD license.
-# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
-
-
 if (CKCONNECTOR_INCLUDE_DIR AND CKCONNECTOR_LIBRARIES)
 
   # in cache already

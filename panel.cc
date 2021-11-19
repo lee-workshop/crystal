@@ -1,14 +1,3 @@
-/* SLiM - Simple Login Manager
-   Copyright (C) 1997, 1998 Per Liden
-   Copyright (C) 2004-06 Simone Rota <sip@varlock.com>
-   Copyright (C) 2004-06 Johannes Winkelmann <jw@tks6.net>
-
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-*/
-
 #include <sstream>
 #include <poll.h>
 #include <X11/extensions/Xrandr.h>
@@ -300,7 +289,7 @@ void Panel::WrongPassword(int timeout) {
 	int msg_y = Cfg::absolutepos(cfgY, XHeightOfScreen(ScreenOfDisplay(Dpy, Scr)), extents.height);
 
 	OnExpose();
-	SlimDrawString8(draw, &msgcolor, msgfont, msg_x, msg_y, message,
+	CrystalDrawString8(draw, &msgcolor, msgfont, msg_x, msg_y, message,
 		&msgshadowcolor, shadowXOffset, shadowYOffset);
 
 	if (cfg->getOption("bell") == "1")
@@ -312,7 +301,7 @@ void Panel::WrongPassword(int timeout) {
 	OnExpose();
 	// The message should stay on the screen even after the password field is
 	// cleared, methinks. I don't like this solution, but it works.
-	SlimDrawString8(draw, &msgcolor, msgfont, msg_x, msg_y, message,
+	CrystalDrawString8(draw, &msgcolor, msgfont, msg_x, msg_y, message,
 		&msgshadowcolor, shadowXOffset, shadowYOffset);
 	XSync(Dpy, True);
 	XftDrawDestroy(draw);
@@ -347,7 +336,7 @@ void Panel::Message(const string& text) {
 		msg_y = Cfg::absolutepos(cfgY, XHeightOfScreen(ScreenOfDisplay(Dpy, Scr)), extents.height);
 	}
 
-	SlimDrawString8 (draw, &msgcolor, msgfont, msg_x, msg_y,
+	CrystalDrawString8 (draw, &msgcolor, msgfont, msg_x, msg_y,
 					 text,
 					 &msgshadowcolor,
 					 shadowXOffset, shadowYOffset);
@@ -478,25 +467,25 @@ void Panel::OnExpose(void) {
 		XClearWindow(Dpy, Win);
 
 	if (input_pass_x != input_name_x || input_pass_y != input_name_y){
-		SlimDrawString8 (draw, &inputcolor, font, input_name_x, input_name_y,
+		CrystalDrawString8 (draw, &inputcolor, font, input_name_x, input_name_y,
 						 NameBuffer,
 						 &inputshadowcolor,
 						 inputShadowXOffset, inputShadowYOffset);
-		SlimDrawString8 (draw, &inputcolor, font, input_pass_x, input_pass_y,
+		CrystalDrawString8 (draw, &inputcolor, font, input_pass_x, input_pass_y,
 						 HiddenPasswdBuffer,
 						 &inputshadowcolor,
 						 inputShadowXOffset, inputShadowYOffset);
 	} else { /*single input mode */
 		switch(field) {
 			case Get_Passwd:
-				SlimDrawString8 (draw, &inputcolor, font,
+				CrystalDrawString8 (draw, &inputcolor, font,
 								 input_pass_x, input_pass_y,
 								 HiddenPasswdBuffer,
 								 &inputshadowcolor,
 								 inputShadowXOffset, inputShadowYOffset);
 				break;
 			case Get_Name:
-				SlimDrawString8 (draw, &inputcolor, font,
+				CrystalDrawString8 (draw, &inputcolor, font,
 								 input_name_x, input_name_y,
 								 NameBuffer,
 								 &inputshadowcolor,
@@ -667,7 +656,7 @@ bool Panel::OnKeyPress(XEvent& event) {
 	}
 
 	if (!text.empty()) {
-		SlimDrawString8 (draw, &inputcolor, font, xx, yy,
+		CrystalDrawString8 (draw, &inputcolor, font, xx, yy,
 				 text,
 				 &inputshadowcolor,
 				 inputShadowXOffset, inputShadowYOffset);
@@ -700,7 +689,7 @@ void Panel::ShowText(){
 	welcome_x = Cfg::absolutepos(cfgX, image->Width(), extents.width);
 	welcome_y = Cfg::absolutepos(cfgY, image->Height(), extents.height);
 	if (welcome_x >= 0 && welcome_y >= 0) {
-		SlimDrawString8 (draw, &welcomecolor, welcomefont,
+		CrystalDrawString8 (draw, &welcomecolor, welcomefont,
 						 welcome_x, welcome_y,
 						 welcome_message,
 						 &welcomeshadowcolor, shadowXOffset, shadowYOffset);
@@ -719,7 +708,7 @@ void Panel::ShowText(){
 		password_x = Cfg::absolutepos(cfgX, image->Width(), extents.width);
 		password_y = Cfg::absolutepos(cfgY, image->Height(), extents.height);
 		if (password_x >= 0 && password_y >= 0){
-			SlimDrawString8 (draw, &entercolor, enterfont, password_x, password_y,
+			CrystalDrawString8 (draw, &entercolor, enterfont, password_x, password_y,
 							 msg, &entershadowcolor, shadowXOffset, shadowYOffset);
 		}
 	}
@@ -735,7 +724,7 @@ void Panel::ShowText(){
 		username_x = Cfg::absolutepos(cfgX, image->Width(), extents.width);
 		username_y = Cfg::absolutepos(cfgY, image->Height(), extents.height);
 		if (username_x >= 0 && username_y >= 0){
-			SlimDrawString8 (draw, &entercolor, enterfont, username_x, username_y,
+			CrystalDrawString8 (draw, &entercolor, enterfont, username_x, username_y,
 							 msg, &entershadowcolor, shadowXOffset, shadowYOffset);
 		}
 	}
@@ -785,7 +774,7 @@ void Panel::ShowSession() {
 	int shadowXOffset = cfg->getIntOption("session_shadow_xoffset");
 	int shadowYOffset = cfg->getIntOption("session_shadow_yoffset");
 
-	SlimDrawString8(draw, &sessioncolor, sessionfont, x, y,
+	CrystalDrawString8(draw, &sessioncolor, sessionfont, x, y,
 					currsession,
 					&sessionshadowcolor,
 					shadowXOffset, shadowYOffset);
@@ -794,7 +783,7 @@ void Panel::ShowSession() {
 }
 
 
-void Panel::SlimDrawString8(XftDraw *d, XftColor *color, XftFont *font,
+void Panel::CrystalDrawString8(XftDraw *d, XftColor *color, XftFont *font,
 							int x, int y, const string& str,
 							XftColor* shadowColor,
 							int xOffset, int yOffset)

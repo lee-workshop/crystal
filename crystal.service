@@ -1,5 +1,5 @@
 [Unit]
-Description=SLiM Simple Login Manager
+Description=Crystal Simple Login Manager
 After=systemd-user-sessions.service
 
 [Service]
