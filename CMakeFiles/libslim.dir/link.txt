@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC  -Wall -g -O2 -O3 -DNDEBUG -shared -Wl,-soname,libslim.so.1.3.6 -o libslim.so.1.3.6 CMakeFiles/libslim.dir/cfg.cpp.o CMakeFiles/libslim.dir/image.cpp.o CMakeFiles/libslim.dir/log.cpp.o CMakeFiles/libslim.dir/panel.cpp.o CMakeFiles/libslim.dir/util.cpp.o CMakeFiles/libslim.dir/PAM.cpp.o  -lpam -lXft -lXrandr -ljpeg -lpng -lz 

@@ -1,14 +1,3 @@
-/* SLiM - Simple Login Manager
-   Copyright (C) 2004-06 Simone Rota <sip@varlock.com>
-   Copyright (C) 2004-06 Johannes Winkelmann <jw@tks6.net>
-   Copyright (C) 2012-13 Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
-
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-*/
-
 #include <fstream>
 #include <string>
 #include <iostream>
@@ -42,16 +31,16 @@ Cfg::Cfg()
 	options.insert(option("sessionstart_cmd",""));
 	options.insert(option("sessionstop_cmd",""));
 	options.insert(option("console_cmd","/usr/bin/xterm -C -fg white -bg black +sb -g %dx%d+%d+%d -fn %dx%d -T ""Console login"" -e /bin/sh -c ""/bin/cat /etc/issue; exec /bin/login"""));
-	options.insert(option("screenshot_cmd","import -window root /slim.png"));
+	options.insert(option("screenshot_cmd","import -window root /crystal.png"));
 	options.insert(option("welcome_msg","Welcome to %host"));
 	options.insert(option("session_msg","Session:"));
 	options.insert(option("default_user",""));
 	options.insert(option("focus_password","no"));
 	options.insert(option("auto_login","no"));
 	options.insert(option("current_theme","default"));
-	options.insert(option("lockfile","/var/run/slim.lock"));
-	options.insert(option("logfile","/var/log/slim.log"));
-	options.insert(option("authfile","/var/run/slim.auth"));
+	options.insert(option("lockfile","/var/run/crystal.lock"));
+	options.insert(option("logfile","/var/log/crystal.log"));
+	options.insert(option("authfile","/var/run/crystal.auth"));
 	options.insert(option("shutdown_msg","The system is halting..."));
 	options.insert(option("reboot_msg","The system is rebooting..."));
 	options.insert(option("sessiondir",""));
@@ -119,7 +108,7 @@ Cfg::Cfg()
 	options.insert(option("session_shadow_yoffset", "0"));
 	options.insert(option("session_shadow_color","#FFFFFF"));
 
-	// slimlock-specific options
+	// crystallock-specific options
 	options.insert(option("dpms_standby_timeout", "60"));
 	options.insert(option("dpms_off_timeout", "600"));
 	options.insert(option("wrong_passwd_timeout", "2"));
