@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.6.0 FATAL_ERROR)
 
 set(PROJECT_NAME crystal)
 project(${PROJECT_NAME})
+set(CMAKE_SYSTEM_NAME Linux)
 
 #Pretty colors
 set(CMAKE_COLOR_MAKEFILE ON)
@@ -246,5 +247,10 @@ install(FILES crystal.conf DESTINATION ${SYSCONFDIR})
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 	install(FILES crystal.service DESTINATION ${LIBDIR}/systemd/system)
 endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+# pam
+install(FILES config/pam/crystal DESTINATION ${SYSCONFDIR}/pam.d)
+install(FILES config/pam/crystallock DESTINATION ${SYSCONFDIR}/pam.d)
+# log
+install(FILES config/log/crystal DESTINATION ${SYSCONFDIR}/logrotate.d)
 # themes directory
 subdirs(themes)
