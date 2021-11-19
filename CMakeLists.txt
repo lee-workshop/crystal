@@ -49,27 +49,27 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -g -O2")
 
 # source 
 set(crystal_srcs
-	main.cpp
-	app.cpp
-	numlock.cpp
-	switchuser.cpp
+	main.cc
+	app.cc
+	numlock.cc
+	switchuser.cc
 	png.c
 	jpeg.c
 )
 
 set(crystallock_srcs
-	crystallock.cpp
+	crystallock.cc
 )
 
 set(common_srcs
-    cfg.cpp
-    image.cpp
-    log.cpp
-    panel.cpp
-    util.cpp
+    cfg.cc
+    image.cc
+    log.cc
+    panel.cc
+    util.cc
 )
 if(USE_PAM)
-	set(common_srcs ${common_srcs} PAM.cpp)
+	set(common_srcs ${common_srcs} PAM.cc)
     # for now, only build crystallock if we are using PAM.
     set(BUILD_CRYSTALLOCK 1)
 endif(USE_PAM)
@@ -86,7 +86,7 @@ else(BUILD_SHARED_LIBS)
 endif(BUILD_SHARED_LIBS)
 
 if(USE_CONSOLEKIT)
-	set(crystal_srcs ${crystal_srcs} Ck.cpp)
+	set(crystal_srcs ${crystal_srcs} Ck.cc)
 endif(USE_CONSOLEKIT)
 
 add_executable(${PROJECT_NAME} ${crystal_srcs})
