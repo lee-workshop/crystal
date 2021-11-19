@@ -69,7 +69,7 @@ set(common_srcs
     util.cc
 )
 if(USE_PAM)
-	set(common_srcs ${common_srcs} PAM.cpp)
+	set(common_srcs ${common_srcs} PAM.cc)
     # for now, only build crystallock if we are using PAM.
     set(BUILD_CRYSTALLOCK 1)
 endif(USE_PAM)
