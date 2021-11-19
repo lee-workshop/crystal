@@ -1,17 +1,3 @@
-/* SLiM - Simple Login Manager
-   Copyright (C) 2004-06 Simone Rota <sip@varlock.com>
-   Copyright (C) 2004-06 Johannes Winkelmann <jw@tks6.net>
-   Copyright (C) 2012	Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
-
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-
-   The following code has been adapted and extended from
-   xplanet 1.0.1, Copyright (C) 2002-04 Hari Nair <hari@alumni.caltech.edu>
-*/
-
 #include <cctype>
 #include <cmath>
 #include <cstdio>

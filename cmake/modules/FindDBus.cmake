@@ -1,18 +1,3 @@
-# - Try to find the low-level D-Bus library
-# Once done this will define
-#
-#  DBUS_FOUND - system has D-Bus
-#  DBUS_INCLUDE_DIR - the D-Bus include directory
-#  DBUS_ARCH_INCLUDE_DIR - the D-Bus architecture-specific include directory
-#  DBUS_LIBRARIES - the libraries needed to use D-Bus
-
-# Copyright (c) 2008, Kevin Kofler, <kevin.kofler@chello.at>
-# modeled after FindLibArt.cmake:
-# Copyright (c) 2006, Alexander Neundorf, <neundorf@kde.org>
-#
-# Redistribution and use is allowed according to the terms of the BSD license.
-# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
-
 if (DBUS_INCLUDE_DIR AND DBUS_ARCH_INCLUDE_DIR AND DBUS_LIBRARIES)
 
   # in cache already

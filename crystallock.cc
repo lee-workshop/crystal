@@ -1,12 +1,3 @@
-/* slimlock
- * Copyright (c) 2010-2012 Joel Burget <joelburget@gmail.com>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- */
-
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
@@ -33,8 +24,8 @@
 #include "panel.h"
 
 #undef APPNAME
-#define APPNAME "slimlock"
-#define SLIMLOCKCFG SYSCONFDIR"/slimlock.conf"
+#define APPNAME "crystallock"
+#define CRYSTALLOCKCFG SYSCONFDIR"/crystallock.conf"
 
 using namespace std;
 
@@ -80,7 +71,7 @@ int main(int argc, char **argv) {
 
 	void (*prev_fn)(int);
 
-	// restore DPMS settings should slimlock be killed in the line of duty
+	// restore DPMS settings should crystallock be killed in the line of duty
 	prev_fn = signal(SIGTERM, HandleSignal);
 	if (prev_fn == SIG_IGN) signal(SIGTERM, SIG_IGN);
 
@@ -107,7 +98,7 @@ int main(int argc, char **argv) {
 	// Read user's current theme
 	cfg = new Cfg;
 	cfg->readConf(CFGFILE);
-	cfg->readConf(SLIMLOCKCFG);
+	cfg->readConf(CRYSTALLOCKCFG);
 	string themebase = "";
 	string themefile = "";
 	string themedir = "";
@@ -182,7 +173,7 @@ int main(int argc, char **argv) {
 	loginPanel = new Panel(dpy, scr, win, cfg, themedir, Panel::Mode_Lock);
 
 	int ret = pam_start(APPNAME, loginPanel->GetName().c_str(), &conv, &pam_handle);
-	// If we can't start PAM, just exit because slimlock won't work right
+	// If we can't start PAM, just exit because crystallock won't work right
 	if (ret != PAM_SUCCESS)
 		die("PAM: %s\n", pam_strerror(pam_handle, ret));
 
