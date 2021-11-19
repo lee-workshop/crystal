@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -g -O2 -O3 -DNDEBUG -rdynamic CMakeFiles/slimlock.dir/slimlock.cpp.o -o slimlock  -lpam -lm -lrt -lcrypt -lX11 -lXft -lXrender -lXrandr -lXmu -lXext -lfreetype -ljpeg -lpng -lz -lpthread libslim.so.1.3.6 -lpam -lXft -lXrandr -ljpeg -lpng -lz 
